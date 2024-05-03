@@ -1,4 +1,5 @@
 from typing import *
+import functools
 
 def SAdd(A:int,B:int) -> tuple[int,int]:
     """
@@ -38,13 +39,8 @@ def Adder_8(A:str,B:str) -> str:
         A:输入1
         B:输入2
     """
-    
     # 定义最大位数
     MAX = 8
-    # 检测输入的数是否为二进制，如果不是，将直接退出
-    for i,j in zip(A,B):
-        if ((i != 0) and (i != 1)) or ((j != 0) and (j != 1)):
-            return
     # 检测尾数是否超出最大位数，如果超出，将直接退出
     if (len(A) > MAX) or (len(B) > MAX):
         return
@@ -64,10 +60,8 @@ def Adder_8(A:str,B:str) -> str:
         res_lst.append(lst[0])
         # 将当前的进位输出保存
         Cout = lst[1]
-    # 因为是倒着遍历的，所以要翻转回来
-    res_lst = res_lst[::-1]
-    # 将列表转化为字符串
-    res = ""
-    for i in res_lst:
-        res += str(i)
-    return res
+    # 翻转列表（因为是倒着遍历的，所以要翻转回来）
+    res_lst.reverse()
+    print(res_lst)
+    # 将列表转化为字符串并返回
+    return functools.reduce(lambda a,b:str(a)+str(b),res_lst)
