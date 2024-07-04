@@ -41,6 +41,10 @@ def Adder_8(A:str,B:str) -> str:
     """
     # 定义最大位数
     MAX = 8
+    # 检测输入的数是否为二进制，如果不是，将直接退出
+    for i,j in zip(A,B):
+        if ((i != 0) and (i != 1)) or ((j != 0) and (j != 1)):
+            return
     # 检测尾数是否超出最大位数，如果超出，将直接退出
     if (len(A) > MAX) or (len(B) > MAX):
         return
